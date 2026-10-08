@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+
+# Environment — never commit secrets
+.env
+.env.local
+.env.*.local
+
+# Builds
+client/dist/
+server/coverage/
+
+# Logs & OS noise
+*.log
+.DS_Store
+Thumbs.db
+
+# Freebuff workspace metadata
+.freebuff/
