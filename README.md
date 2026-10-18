@@ -4,6 +4,23 @@
 
 > SpendGuard is a decision-support tool, not a financial advisor. Every number shown is computed deterministically from the user's own transactions — and every card, insight and score can answer **"Why am I seeing this?"** with the exact data, formula and arithmetic behind it.
 
+## Project at a glance
+
+SpendGuard is designed for people who want more than a static ledger or a pretty chart. It helps you:
+
+- understand spending patterns over time, not just totals
+- compare the current month to the same period last month using fair, like-for-like logic
+- view budget health with projected outcomes and clear assumptions
+- identify recurring commitments before they quietly grow
+- review every score, insight and recommendation with the underlying formula and data
+
+### Typical workflow
+
+1. Import or record transactions.
+2. Review budgets, safe-to-spend, and month-to-date trends.
+3. Check recurring-commitment suggestions and confirm which ones are real obligations.
+4. Use the health score and explainable insights to decide whether spending is sustainable.
+
 ---
 
 ## Why SpendGuard is different
@@ -66,7 +83,7 @@ flowchart LR
 
 ## Quick start
 
-Prerequisites: **Node.js 20.19+ or 22.12+** (required by Vite 8) and a local **MongoDB** listening on `mongodb://127.0.0.1:27017`.
+Prerequisites: **Node.js 20.19+ or 22.12+** (required by Vite 8) and a local **MongoDB** instance running on `mongodb://127.0.0.1:27017`.
 
 ```bash
 # 1. Backend
@@ -74,7 +91,7 @@ cd server
 npm install
 cp .env.example .env        # macOS/Linux; then set a strong JWT_SECRET
 # PowerShell equivalent: Copy-Item .env.example .env
-npm run seed:fresh          # optional: 6 months of realistic demo data
+npm run seed:fresh          # optional: loads realistic demo data for 6 months
 npm run dev                 # → http://localhost:5000
 
 # 2. Frontend (new terminal)
@@ -82,6 +99,13 @@ cd client
 npm install
 npm run dev                 # → http://localhost:5173
 ```
+
+### Local development notes
+
+- The backend uses Express and Mongoose and exposes the app at `http://localhost:5000/api`.
+- The frontend is a Vite React app served on `http://localhost:5173` and proxies API requests to the backend.
+- If you need a fresh database state, run `npm run seed:fresh` in `server/` to rebuild the demo dataset.
+- In production, the app can also serve the built frontend from the same Express server, but local development is usually run as two separate processes.
 
 **Demo credentials** (fictional data, ~470 transactions over 6 months, 6 budgets, 8 detected recurring commitments):
 
